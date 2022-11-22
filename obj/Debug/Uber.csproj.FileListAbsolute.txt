@@ -1,0 +1,7 @@
+D:\c#\Uber\bin\Debug\Uber.exe.config
+D:\c#\Uber\bin\Debug\Uber.exe
+D:\c#\Uber\bin\Debug\Uber.pdb
+D:\c#\Uber\obj\Debug\Uber.csproj.AssemblyReference.cache
+D:\c#\Uber\obj\Debug\Uber.csproj.CoreCompileInputs.cache
+D:\c#\Uber\obj\Debug\Uber.exe
+D:\c#\Uber\obj\Debug\Uber.pdb
