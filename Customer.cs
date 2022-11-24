@@ -52,8 +52,8 @@ namespace UBER
         }
         public string Destination()
         {
-            string dist = Console.ReadLine();
-            return dist;
+            Distination_s_g = Console.ReadLine();
+            return Distination_s_g;
         }
         ~Customer(){
             //update data or create one in database

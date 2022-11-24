@@ -72,8 +72,7 @@ namespace UBER
         {
             double price = 0;
             UBER_Services serve;
-            Console.WriteLine("Enter The price of trip:  ");
-            price = double.Parse(Console.ReadLine());
+            price = cust.Detect_price();
             Console.WriteLine("Enter your destination:  ");
             string destination = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.Yellow;

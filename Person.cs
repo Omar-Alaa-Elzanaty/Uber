@@ -3,7 +3,7 @@ namespace UBER
 {
     public abstract class Person
     {
-        private string First_name, Last_name, National_ID,Phone_number,Current_place,Gander,user,password;
+        private string First_name, Last_name, National_ID,Phone_number,Current_place,Gander,user,password,Distination;
         private int Age;
         private double Wallet;
         private int[] Birthdate = new int[3];
@@ -19,6 +19,7 @@ namespace UBER
         public string User { get => user; set => user = value; }
         public string Password { get => password; set => password = value; }
         public int ID_s_g { get => ID; set => ID = value; }
+        public string Distination_s_g { get => Distination; set => Distination = value; }
 
         public Sign_up signup;
         public void set_birthdate(int day ,int month ,int year)
