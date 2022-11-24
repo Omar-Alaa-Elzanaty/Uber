@@ -17,13 +17,13 @@ namespace UBER
             Console.WriteLine("For Sign up -> 1  :  Login  -> 2");
             string operation = Console.ReadLine();
             string user, pass;
-            Person person;
             if (type == "1")//customer
             {
+                Customer cust;
                 if (operation == "1")//signUp
                 {
-                    person = new Customer(0);
-                    person.Sign_up_operation();
+                    cust = new Customer(0);
+                    cust.Sign_up_operation();
                     Console.WriteLine("Thanks for using Uber App");
                 }
                 else // login
@@ -33,24 +33,32 @@ namespace UBER
                     Console.Write("Enter Password : ");
                     pass = Console.ReadLine();
                     Login logdata = new Login(user, pass);
-                    while (!logdata.check("Customer"))
+                    while(!logdata.check("Customer"))
                     {
                         Console.WriteLine("There is something Wrong Username or Password");
+                        Console.WriteLine("Enter Username then Password");
+                        logdata.Username_s_g = Console.ReadLine();
+                        logdata.Password_s_g = Console.ReadLine();
                     }
-                    person = new Customer(user, pass);
+                    cust = new Customer(user, pass);
                     Console.WriteLine("         Welcome back on Uber App");
 
                     Console.WriteLine("to Make Order -> press 1");
+                    Console.WriteLine("to show balancing wallet -> press 2");
+                    Console.WriteLine("to show last payment method -> press 3");
                     string choice = Console.ReadLine();
-                    if (choice == "1") make_order((Customer)person);//order
+                    if (choice == "1") make_order(cust);//order
+                    if (choice == "2") Console.WriteLine($"Your Balance wallet : {cust.Wallet_s_g}");
+                    if (choice == "3") cust.Payment_method_s_g=" ";
                 }
             }
             else //driver
             {
+                Driver driver;
                 if (operation == "1")//signUp
                 {
-                    person = new Driver(0);
-                    person.Sign_up_operation();
+                    driver = new Driver(0);
+                    driver.Sign_up_operation();
                 }
                 else// login
                 {
@@ -63,7 +71,7 @@ namespace UBER
                     {
                         Console.WriteLine("There is something Wrong Username or Password");
                     }
-                    person = new Driver(user, pass);
+                    driver = new Driver(user, pass);
 
                 }
             }

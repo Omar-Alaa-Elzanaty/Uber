@@ -24,7 +24,7 @@ namespace UBER
             this.Payment_method = "Cash";
             signup = new Cust_Sign();
         }
-        public string Payment_method1 { get => Payment_method; set => Payment_method = value; }
+        public string Payment_method_s_g { get => Payment_method; set => Payment_method = value; }
 
         public string Select_Service() {
             Console.WriteLine("choose your Travel : \n");
