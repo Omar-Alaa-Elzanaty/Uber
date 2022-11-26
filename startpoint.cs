@@ -49,7 +49,7 @@ namespace UBER
                     string choice = Console.ReadLine();
                     if (choice == "1") make_order(cust);//order
                     if (choice == "2") Console.WriteLine($"Your Balance wallet : {cust.Wallet_s_g}");
-                    if (choice == "3") cust.Payment_method_s_g=" ";
+                    if (choice == "3") Console.WriteLine($"last payment method : {cust.Payment_method_s_g}");
                 }
             }
             else //driver
@@ -72,9 +72,10 @@ namespace UBER
                         Console.WriteLine("There is something Wrong Username or Password");
                     }
                     driver = new Driver(user, pass);
-
+                    //options to driver 
                 }
             }
+            Console.WriteLine("thanks for using Uber");
         }
         public static void make_order(Customer cust)
         {
