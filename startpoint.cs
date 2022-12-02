@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using UberDatabase;
 namespace UBER
 {
     class startpoint
@@ -22,7 +23,7 @@ namespace UBER
                 Customer cust;
                 if (operation == "1")//signUp
                 {
-                    cust = new Customer(0);
+                    cust = new Customer('.');
                     cust.Sign_up_operation();
                     Console.WriteLine("Thanks for using Uber App");
                 }
@@ -57,7 +58,7 @@ namespace UBER
                 Driver driver;
                 if (operation == "1")//signUp
                 {
-                    driver = new Driver(0);
+                    driver = new Driver('.');
                     driver.Sign_up_operation();
                 }
                 else// login
@@ -115,9 +116,34 @@ namespace UBER
                 else if (choice == "total_prices") { Console.WriteLine("Cost of Trip "+serve.Total_Prices(price));}
                 else Console.WriteLine("choose one of avaliable options");
             }
-            changecolor(ConsoleColor.Red);
-            Console.WriteLine("choose Payment Method");
+            Console.WriteLine("1 -> verified Paied method");
+            Console.WriteLine("2 -> cancelling the trip");
+            int state = int.Parse(Console.ReadLine());
+            if (state == 2)
+            {
+                Console.WriteLine("the trip has been cancelled");
+            }
+            Console.WriteLine("processing");
+            for(int i = 0; i < 5; i++)
+            {
+                Console.Write('.');
+                System.Threading.Thread.Sleep(300);
+            }
+            Driver driver;
+            if (Database.Check_Riders_availability())
+            {
+                driver = Driver.git_driver(serve.Addorder(cust.ID_s_g, destination));
+                changecolor(ConsoleColor.Green);
+                Console.WriteLine("Found available caption for your trip");
+            }
+            else
+            {
+                changecolor(ConsoleColor.Red);
+                Console.WriteLine("Sorry there is no available Cars for know");
+                return;
+            }
             changecolor(ConsoleColor.White);
+            Console.WriteLine("choose Payment Method");
             Console.WriteLine("Cash");
             Console.WriteLine("Online Wallet");
             choice = Console.ReadLine().ToLower();
@@ -136,9 +162,11 @@ namespace UBER
                 pay.Process_Record();
                 changecolor(ConsoleColor.DarkGreen);
                 Console.WriteLine("Completed process...");
+                System.Threading.Thread.Sleep(300);
                 changecolor(ConsoleColor.White);
             }
             pay.Recipt();//need implementation
+            driver.Update_Review(cust.Add_Review());
         }
         static void changecolor(ConsoleColor color)
         {

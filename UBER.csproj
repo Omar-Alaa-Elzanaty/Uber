@@ -46,6 +46,7 @@
     <Compile Include="Cash.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Cust_Sign.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="Driver _record_operation.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Drive_Sign.cs" />

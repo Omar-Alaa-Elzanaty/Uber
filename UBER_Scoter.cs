@@ -24,8 +24,9 @@ namespace UBER
         {
             Console.WriteLine("max number of stop point : {0}", 1);
         }
-        public void Addorder(int ID, string destination)
+        public int Addorder(int ID, string destination)
         {
+            return 0;
             //sql database
         }
         public void Removeorder(int ID, string destination)

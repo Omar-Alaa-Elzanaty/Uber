@@ -12,7 +12,7 @@ namespace UBER
         double Total_Prices(double trip_coast);
         int Number_of_Riders();
         void number_of_stoppoint();
-        void Addorder(int id,string Destination);
+        int Addorder(int id, string Destination);
         void Removeorder(int id, string Destination);
     }
 }

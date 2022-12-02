@@ -18,7 +18,7 @@ namespace UBER
         {
             //get tuple of username and pass from customer and put all data in main attribute
         }
-        public Customer(int x)
+        public Customer(char s)
         {
             this.Mail = "NO Mail";
             this.Payment_method = "Cash";

@@ -21,10 +21,15 @@ namespace UBER
         {
             //get tuple of username and pass from Driver and put all data in main attribute
         }
-        public Driver(int x)
+        public Driver(char x)
         {
             Reviews_count = 0;
             signup = new Drive_Sign();
+        }
+        static public Driver git_driver(int id)
+        {
+            //git data of driver from databse
+            return new Driver();
         }
         public bool Current_state_s_g { get => current_state; set => current_state = value; }
         public string Car_Licence_s_g { get => Car_Licence; set => Car_Licence = value; }
@@ -40,8 +45,11 @@ namespace UBER
         }
         public void Update_Review(int Review) {
             Reviews_count++;
-            Reviews = (Reviews + Review) / Reviews_count;
+            this.Reviews = (this.Reviews + Review) / Reviews_count;
         }
+        /// <summary>
+        /// let you know all orders get by this driver 
+        /// </summary>
         public void Show_my_orders(int Drive_id,int User_ID,string Destination)
         {
             if (!Current_state_s_g)
