@@ -18,7 +18,7 @@ namespace UBER
             Console.WriteLine("For Sign up -> 1  :  Login  -> 2");
             string operation = Console.ReadLine();
             string user, pass;
-            if (type == "1")//customer
+            if (type == "1")//Customer
             {
                 Customer cust;
                 if (operation == "1")//signUp
@@ -47,13 +47,15 @@ namespace UBER
                     Console.WriteLine("to Make Order -> press 1");
                     Console.WriteLine("to show balancing wallet -> press 2");
                     Console.WriteLine("to show last payment method -> press 3");
+                    Console.WriteLine("to show General setting -> press 4");
                     string choice = Console.ReadLine();
                     if (choice == "1") make_order(cust);//order
                     if (choice == "2") Console.WriteLine($"Your Balance wallet : {cust.Wallet_s_g}");
                     if (choice == "3") Console.WriteLine($"last payment method : {cust.Payment_method_s_g}");
+                    if (choice == "3") General_setting(cust);
                 }
             }
-            else //driver
+            else //Driver
             {
                 Driver driver;
                 if (operation == "1")//signUp
@@ -73,7 +75,16 @@ namespace UBER
                         Console.WriteLine("There is something Wrong Username or Password");
                     }
                     driver = new Driver(user, pass);
-                    //options to driver 
+                    Console.WriteLine("Enter your choice number");
+                    Console.WriteLine("Get your Review  press -> 1");
+                    Console.WriteLine("Get your car Licence  press-> 2");
+                    Console.WriteLine("Get your Wallet Balance  press-> 3");
+                    Console.WriteLine("Get your General setting  press-> 4");
+                    string choice = Console.ReadLine();
+                    if (choice == "1") Console.WriteLine(driver.Get_Reviews());
+                    if (choice == "2") Console.WriteLine(driver.Car_Licence_s_g);
+                    if (choice == "3") Console.WriteLine($"Your Balance wallet : {driver.Wallet_s_g}");
+                    if (choice == "4") General_setting(driver);
                 }
             }
             Console.WriteLine("thanks for using Uber");
@@ -122,19 +133,21 @@ namespace UBER
             if (state == 2)
             {
                 Console.WriteLine("the trip has been cancelled");
+                return;
             }
-            Console.WriteLine("processing");
+            Console.Write("processing");
             for(int i = 0; i < 5; i++)
             {
-                Console.Write('.');
                 System.Threading.Thread.Sleep(300);
+                Console.Write('.');
             }
+            Console.WriteLine();
             Driver driver;
             if (Database.Check_Riders_availability())
             {
                 driver = Driver.git_driver(serve.Addorder(cust.ID_s_g, destination));
                 changecolor(ConsoleColor.Green);
-                Console.WriteLine("Found available caption for your trip");
+                Console.WriteLine("There is Caption available for your Trip ");
             }
             else
             {
@@ -154,7 +167,8 @@ namespace UBER
                 pay = new Online_Wallet();
                 double money = cust.Wallet_s_g;
                 money = pay.payment(money, serve.Total_Prices(money));
-                if (money >= 0) cust.Wallet_s_g -= money;
+                if (money >= 0)cust.Remove_from_wallet(money);
+                driver.Add_to_wallet(money);
             }
             else
             {
@@ -171,6 +185,20 @@ namespace UBER
         static void changecolor(ConsoleColor color)
         {
             Console.ForegroundColor = color;
+        }
+        static void General_setting(Person p)
+        {
+            Console.WriteLine("Enter your choice");
+            Console.WriteLine("Get First name -> 1");
+            Console.WriteLine("Get Last name  press-> 2");
+            Console.WriteLine("Get  Birthdate press-> 3");
+            Console.WriteLine("Get  National id press-> 4");
+            Console.WriteLine("Get  Mobile number press-> 5");
+            string choice = Console.ReadLine();
+            if (choice == "1") Console.WriteLine($"First Name : {p.First_name_s_g}");
+            if (choice == "1") Console.WriteLine($"Last Name : {p.Last_name_s_g}");
+            if (choice == "1") Console.WriteLine($"Birthdate : {p.get_birthdate()}");
+            if (choice == "1") Console.WriteLine($"Mobile number : {p.Phone_number_s_g}");
         }
     }
    

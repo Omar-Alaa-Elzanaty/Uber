@@ -14,7 +14,7 @@ namespace UBER
         }
         public override void sign()
         {
-            Console.Write("Enter your car License");
+            Console.Write("Enter your car License: ");
             License = Console.ReadLine();
             //upload data of user if not found or out this account already use
         }

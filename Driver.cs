@@ -60,12 +60,6 @@ namespace UBER
             Console.WriteLine("User_ID : {0} , Destination : {1}", User_ID, Destination);
             
         }
-        public int catch_order()
-        {
-            Console.WriteLine("Enter User ID : ");
-            int x = int.Parse(Console.ReadLine());
-            return x;
-        }
         public string Typeofservice()
         {
             string serve = Console.ReadLine();

@@ -8,6 +8,10 @@ namespace UBER
 {
     class UBER_Scoter:Driver__record_operation, UBER_Services
     {
+        public UBER_Scoter()
+        {
+            Console.WriteLine("Welcome in Uber Scoter");
+        }
         public void serviceinfo()
         {
             //this function provide descripition for uber_scoter service

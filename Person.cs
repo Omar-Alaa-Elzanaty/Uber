@@ -32,11 +32,11 @@ namespace UBER
         {
             return Convert.ToString(Birthdate[0]) +'\\'+ Convert.ToString(Birthdate[1]) +'\\'+ Convert.ToString(Birthdate[2]);
         }
-        public void Add_to_wallet(int newvalue)
+        public void Add_to_wallet(double newvalue)
         {
             this.Wallet += newvalue;
         }
-        public void Remove_from_wallet(int newvalue)
+        public void Remove_from_wallet(double newvalue)
         {
             this.Wallet -= newvalue;
         }
